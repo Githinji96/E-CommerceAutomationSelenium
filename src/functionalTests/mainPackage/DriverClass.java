@@ -9,11 +9,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class Driver {
-	public static String browser = "firefox";
-	public static WebDriver driver;
+public class DriverClass {
+	public String browser;
+	public WebDriver driver;
 	
-	public Driver() {
+	// browser variable holds the name of the browser
+	public DriverClass(String browser) {
+		this.browser = browser;
 		setup();
 	}
 	
