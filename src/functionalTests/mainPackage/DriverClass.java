@@ -20,13 +20,13 @@ public class DriverClass {
 	}
 	
 	public void setup() {
-		if (browser.equals("firefox")) {
+		if (browser.equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
-		} else if (browser.equals("chrome")) {
+		} else if (browser.equalsIgnoreCase("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
-		} else if (browser.equals("Edge")) {
+		} else if (browser.equalsIgnoreCase("Edge")) {
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 		}
