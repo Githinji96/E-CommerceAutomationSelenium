@@ -5,4 +5,4 @@
  * @author Brian
  *
  */
-package testsByBrian;
+package functionalTests.testsByBrian;
