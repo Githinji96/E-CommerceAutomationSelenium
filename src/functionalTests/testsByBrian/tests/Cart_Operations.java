@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import functionalTests.mainPackage.DriverClass;
@@ -18,8 +19,11 @@ public class Cart_Operations {
 	}
 	
 	@BeforeMethod
+	@Parameters({"url","http://opencart.qatestlab.net/index.php"})
 	public void visit_url(String url) {
+		url = (url.isEmpty())?"http://opencart.qatestlab.net/index.php":url;
 		driverClass.driver.get(url);
+		driverClass.driver.manage().window().maximize();
 	}
 	
 	@Test(priority=0)
@@ -41,18 +45,22 @@ public class Cart_Operations {
 	public void Ability_to_return_to_the_basket_and_order_when_the_browser_is_unexpectedly_closed() {
 		
 	}
+	
 	@Test(priority=4)
 	public void Remove_product_cross_checkbox_QTY_0() {
 		
 	}
+	
 	@Test(priority=5)
 	public void Update_shopping_cart() {
 		
 	}
+	
 	@Test(priority=6)
 	public void Continue_shopping() {
 		
 	}
+	
 	@Test(priority=7)
 	public void Proceed_to_Checkout() {
 		
