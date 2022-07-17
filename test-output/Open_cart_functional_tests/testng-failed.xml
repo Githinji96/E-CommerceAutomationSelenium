@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Open_cart_functional_tests]">
+  <test thread-count="5" name="Sign_in_and_Cart_operations(failed)">
+    <classes>
+      <class name="functionalTests.testsByBrian.tests.Sign_in">
+        <methods>
+          <include name="setup"/>
+          <include name="Password_less_than_6_symbols"/>
+          <include name="Incorrect_email"/>
+          <include name="Add_valid_data"/>
+          <include name="Empty_fields"/>
+        </methods>
+      </class> <!-- functionalTests.testsByBrian.tests.Sign_in -->
+      <class name="functionalTests.testsByBrian.tests.Cart_Operations">
+        <methods>
+          <include name="Update_shopping_cart"/>
+          <include name="Proceed_to_Checkout"/>
+          <include name="Add_over_10_products"/>
+          <include name="Continue_shopping"/>
+          <include name="setup"/>
+          <include name="visit_url"/>
+          <include name="Add_1_product"/>
+          <include name="Remove_product_cross_checkbox_QTY_0"/>
+          <include name="Ability_to_return_to_the_basket_and_order_when_the_browser_is_unexpectedly_closed"/>
+          <include name="Change_number_of_items_from_10_to_0"/>
+        </methods>
+      </class> <!-- functionalTests.testsByBrian.tests.Cart_Operations -->
+    </classes>
+  </test> <!-- Sign_in_and_Cart_operations(failed) -->
+</suite> <!-- Failed suite [Open_cart_functional_tests] -->

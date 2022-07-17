@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Open_cart_functional_tests">
+  <test thread-count="5" name="Sign_in_and_Cart_operations">
+    <classes>
+      <class name="functionalTests.testsByBrian.tests.Sign_in"/>
+      <class name="functionalTests.testsByBrian.tests.Cart_Operations"/>
+    </classes>
+  </test> <!-- Sign_in_and_Cart_operations -->
+</suite> <!-- Open_cart_functional_tests -->
