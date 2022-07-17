@@ -1,6 +1,7 @@
 package functionalTests.mainPackage;
 
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -8,15 +9,18 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class BaseClass {
-	public  static String browser = "firefox";
-	public   static WebDriver driver;
-	@BeforeMethod
-	public void username() {
+public class Driver {
+	public static String browser = "firefox";
+	public static WebDriver driver;
+	
+	public Driver() {
+		setup();
+	}
+	
+	public void setup() {
 		if (browser.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
-
 		} else if (browser.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
@@ -25,5 +29,4 @@ public class BaseClass {
 			driver = new EdgeDriver();
 		}
 	}
-
 }
