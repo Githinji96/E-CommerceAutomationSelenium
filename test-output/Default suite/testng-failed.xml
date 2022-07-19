@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="functionalTests.testsByBrian.tests.Cart_Operations">
+      <class name="functionalTests.testsByBonface.AddProductsIndex">
         <methods>
-          <include name="setup"/>
-          <include name="visit_url"/>
-          <include name="Add_1_product"/>
+          <include name="selectcats"/>
+          <include name="tearDown"/>
+          <include name="beforeAll"/>
         </methods>
-      </class> <!-- functionalTests.testsByBrian.tests.Cart_Operations -->
+      </class> <!-- functionalTests.testsByBonface.AddProductsIndex -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

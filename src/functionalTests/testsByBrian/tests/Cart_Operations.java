@@ -1,5 +1,6 @@
 package functionalTests.testsByBrian.tests;
 
+
 import java.time.Duration;
 import java.util.List;
 
@@ -9,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Ignore;
@@ -19,8 +21,6 @@ import functionalTests.mainPackage.DriverClass;
 public class Cart_Operations {
 	private DriverClass driverClass;
 	private List<WebElement> shoppingItemButtons;
-	private List<WebElement> itemColors;
-	private List<WebElement> itemSizes;
 	
 	@BeforeClass
 	public void setup() {
@@ -43,7 +43,7 @@ public class Cart_Operations {
 		shoppingItemButtons = driverClass.driver.findElements(By.xpath("//span[text()='Add to Cart']"));
 		int randomIndex = (int) (Math.floor(Math.random()*(shoppingItemButtons.size())));
 
-		// choose a random item and click 'Add to Cart' button with Javascript executor on it
+		// choose a random item and click 'Add to Cart' button with Javascript executor
 		driverClass.js.executeScript("arguments[0].click()",shoppingItemButtons.get(randomIndex));
 		
 		// choose item preferences (colour and size)		
@@ -52,17 +52,18 @@ public class Cart_Operations {
 				.until(ExpectedConditions.visibilityOfElementLocated
 					(By.xpath("//*[@id=\"page\"]/div[4]/div/div/div")));
 			
-			itemColors.addAll(driverClass.driver.findElements(By.id("sbSelector_18027191")));
-			
 			// randomly select a cart item colour
 			new Select(driverClass.driver.findElement
-					(By.id("sbSelector_18027191"))).selectByIndex((int) (Math.floor(Math.random()*3)));
+					(By.id("sbSelector_18027191"))).selectByIndex(
+						(int) (Math.floor(Math.random()* 
+							((List<WebElement>) driverClass.driver.findElements
+									(By.id("sbSelector_18027191"))).size())));
 			
 			//randomly select a cart item size
 			new Select(driverClass.driver.findElement
 					(By.id("sbSelector_16213551"))).selectByIndex(
 							(int) (Math.floor(Math.random()* 
-									((List<WebElement>) driverClass.driver.findElement
+									((List<WebElement>) driverClass.driver.findElements
 											(By.id("sbSelector_16213551"))).size())));
 	
 		}catch(NoSuchElementException ex) {
@@ -125,9 +126,10 @@ public class Cart_Operations {
 	public void Proceed_to_Checkout() {
 		
 	}
-	@Ignore
+
 	@Test
-	public void teardown() {
-		
+	public void teardown() throws InterruptedException {
+		Thread.sleep(3000);
+		driverClass.driver.quit();
 	}
 }
