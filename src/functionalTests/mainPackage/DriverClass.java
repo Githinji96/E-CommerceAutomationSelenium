@@ -1,5 +1,6 @@
 package functionalTests.mainPackage;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -15,7 +17,8 @@ public class DriverClass {
 	public String browser;
 	public WebDriver driver;
 	public JavascriptExecutor js;
-
+	public WebDriverWait wait;
+	
 	// browser variable holds the name of the browser
 	public DriverClass(String browser) {
 		this.browser = browser;
@@ -37,5 +40,6 @@ public class DriverClass {
 
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		js = (JavascriptExecutor) driver;
+		wait =  new WebDriverWait(driver, Duration.ofSeconds(4));
 	}
 }

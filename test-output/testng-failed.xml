@@ -5,8 +5,10 @@
     <classes>
       <class name="functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields">
         <methods>
-          <include name="Empty_fields"/>
+          <include name="visitURL"/>
+          <include name="delay"/>
           <include name="setup"/>
+          <include name="Add_valid_data"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields -->
