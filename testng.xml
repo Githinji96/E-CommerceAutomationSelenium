@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Open_cart_functional_tests">
-  <test thread-count="5" name="Sign_in_and_Cart_operations">
-    <classes>
-      <class name="functionalTests.testsByBrian.tests.Sign_in"/>
-      <class name="functionalTests.testsByBrian.tests.Cart_Operations"/>
-    </classes>
-  </test> <!-- Sign_in_and_Cart_operations -->
+	<test thread-count="5" name="Cart">
+		<classes>
+			<class name="functionalTests.testsByBrian.tests.Cart.Full_cart" />
+		</classes>
+	</test> <!-- Cart -->
+	<test thread-count="5" name="Sign_In">
+		<classes>
+			<class name="functionalTests.testsByBrian.tests.SignIn.Returning_customer" />
+			<class name="functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields"/>
+		</classes>
+	</test><!-- "Sign_In -->
 </suite> <!-- Open_cart_functional_tests -->

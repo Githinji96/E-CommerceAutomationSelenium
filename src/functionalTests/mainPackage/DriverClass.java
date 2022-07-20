@@ -11,17 +11,17 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class DriverClass {
-	
+
 	public String browser;
 	public WebDriver driver;
 	public JavascriptExecutor js;
-	
+
 	// browser variable holds the name of the browser
 	public DriverClass(String browser) {
 		this.browser = browser;
 		setup();
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	public void setup() {
 		if (browser.equals("firefox")) {
@@ -34,7 +34,7 @@ public class DriverClass {
 			WebDriverManager.edgedriver().setup();
 			driver = new EdgeDriver();
 		}
-		
+
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		js = (JavascriptExecutor) driver;
 	}

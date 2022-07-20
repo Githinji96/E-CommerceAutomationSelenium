@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="functionalTests.testsByBonface.AddProductsIndex">
+      <class name="functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields">
         <methods>
-          <include name="selectcats"/>
+          <include name="Empty_fields"/>
+          <include name="setup"/>
           <include name="tearDown"/>
-          <include name="beforeAll"/>
         </methods>
-      </class> <!-- functionalTests.testsByBonface.AddProductsIndex -->
+      </class> <!-- functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
