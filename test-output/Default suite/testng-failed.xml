@@ -3,15 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields">
+      <class name="functionalTests.testsByBrian.tests.SignIn.Returning_customer">
         <methods>
-          <include name="visitURL"/>
-          <include name="delay"/>
-          <include name="setup"/>
-          <include name="Add_valid_data"/>
-          <include name="tearDown"/>
+          <include name="afterClass"/>
+          <include name="Forgotten_password_recovery"/>
+          <include name="Sign_out"/>
+          <include name="beforeEach"/>
+          <include name="afterEach"/>
+          <include name="beforeClass"/>
         </methods>
-      </class> <!-- functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields -->
+      </class> <!-- functionalTests.testsByBrian.tests.SignIn.Returning_customer -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

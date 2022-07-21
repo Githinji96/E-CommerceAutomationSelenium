@@ -29,6 +29,7 @@ public class Validation_messages_for_required_fields {
 	private WebDriverWait wait;
 	private String url = "";
 	private String[] inputs, incorrectUserData, correctUserData, passTestData;
+	
 	private WebDriver driver;
 	private JavascriptExecutor js;
 	private DriverClass driverClass;
@@ -70,7 +71,7 @@ public class Validation_messages_for_required_fields {
 	}
 
 	@BeforeMethod
-	public void visitURL() throws InterruptedException {
+	public void launch_test() throws InterruptedException {
 		driver.get(url);
 		Thread.sleep(2000);
 		driver.findElement(By.linkText("Sign In")).click();
@@ -167,9 +168,8 @@ public class Validation_messages_for_required_fields {
 		Thread.sleep(100);
 		js.executeScript("arguments[0].click()",
 				driver.findElement(By.xpath("//*[@id=\"content\"]/form/div/div/input[2]")));
-//		Thread.sleep(5000);
+		
 		// Confirm successful registration
-		// http://opencart.qatestlab.net/index.php?route=account/success
 		assert driver.getCurrentUrl().equals("http://opencart.qatestlab.net/index.php?route=account/success");
 	}
 }

@@ -24,7 +24,13 @@ public class DriverClass {
 		this.browser = browser;
 		setup();
 	}
-
+	
+	// default browser-no-config
+	public DriverClass() {
+		this.browser = "chrome";
+		setup();
+	}
+	
 	@SuppressWarnings("deprecation")
 	public void setup() {
 		if (browser.equals("firefox")) {
@@ -39,7 +45,9 @@ public class DriverClass {
 		}
 
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		
 		js = (JavascriptExecutor) driver;
-		wait =  new WebDriverWait(driver, Duration.ofSeconds(4));
+		wait =  new WebDriverWait(driver, Duration.ofSeconds(5));
 	}
 }

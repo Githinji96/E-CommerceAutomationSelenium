@@ -9,8 +9,10 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
@@ -20,6 +22,7 @@ public class Full_cart {
 
 	private String url = "";
 	private WebDriver driver;
+	private WebDriverWait wait;
 	private JavascriptExecutor js;
 	private DriverClass driverClass;
 	private List<WebElement> shoppingItemButtons;
@@ -33,6 +36,10 @@ public class Full_cart {
 		js = driverClass.js;
 
 		url = (url.isEmpty()) ? "http://opencart.qatestlab.net/index.php" : url;
+	}
+
+	@BeforeMethod
+	public void beforeEach() {
 		driver.get(url);
 		driver.manage().window().maximize();
 	}
@@ -42,7 +49,7 @@ public class Full_cart {
 		Thread.sleep(5000);
 		driver.quit();
 	}
-	@Ignore
+	
 	@Test(priority = 0)
 	public void Add_1_product() throws Exception {
 
