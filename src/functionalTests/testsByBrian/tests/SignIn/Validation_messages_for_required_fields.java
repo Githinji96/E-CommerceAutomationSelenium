@@ -108,7 +108,6 @@ public class Validation_messages_for_required_fields {
 				assert true;
 				return;
 			}
-			System.out.println(field.getText());
 		});
 	}
 
