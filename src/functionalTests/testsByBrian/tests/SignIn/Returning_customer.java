@@ -1,5 +1,7 @@
 package functionalTests.testsByBrian.tests.SignIn;
 
+import java.io.IOException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -20,7 +22,8 @@ import functionalTests.mainPackage.DriverClass;
 
 public class Returning_customer {
 
-	private String url = "http://opencart.qatestlab.net/index.php", browser = "chrome";
+	private String url = "http://opencart.qatestlab.net/index.php";
+	private String  browser = "chrome";
 	private String email = "jane54doe@email.com";
 	private String passWd = "&itsApassword#$YesitIS2022";
 	private WebDriver driver;
@@ -58,9 +61,11 @@ public class Returning_customer {
 	}
 
 	@AfterClass
-	public void afterClass() throws InterruptedException {
+	public void afterClass() throws InterruptedException, IOException {
 		Thread.sleep(3000);
 		driver.quit();
+		Runtime.getRuntime().exec("taskkill /F /IM " + ((!browser.equals("chrome") ? browser : "chrome")).toLowerCase()
+				+ "driver.exe /T");
 	}
 
 	@BeforeMethod

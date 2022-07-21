@@ -3,6 +3,7 @@ package functionalTests.testsByBrian.tests.SignIn;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +28,9 @@ public class Validation_messages_for_required_fields {
 	public int i = 0;
 
 	private WebDriverWait wait;
-	private String url = "";
+	private String url = "", browser = "chrome";
 	private String[] inputs, incorrectUserData, correctUserData, passTestData;
-	
+
 	private WebDriver driver;
 	private JavascriptExecutor js;
 	private DriverClass driverClass;
@@ -38,7 +39,7 @@ public class Validation_messages_for_required_fields {
 	@BeforeClass
 	public void setup() {
 
-		driverClass = new DriverClass("chrome");
+		driverClass = new DriverClass(browser);
 
 		js = driverClass.js;
 		driver = driverClass.driver;
@@ -65,9 +66,11 @@ public class Validation_messages_for_required_fields {
 	}
 
 	@AfterClass
-	public void tearDown() throws InterruptedException {
+	public void tearDown() throws InterruptedException, IOException {
 		Thread.sleep(3000);
 		driver.quit();
+		Runtime.getRuntime().exec("taskkill /F /IM " + ((!browser.equals("chrome") ? browser : "chrome")).toLowerCase()
+				+ "driver.exe /T");
 	}
 
 	@BeforeMethod
@@ -125,7 +128,6 @@ public class Validation_messages_for_required_fields {
 		assert driver.findElement(By.id("input-email-error")).getText().equals("Please enter a valid email address.");
 	}
 
-
 	@Test(priority = 2)
 	public void Password_less_than_6_symbols() {
 
@@ -143,7 +145,8 @@ public class Validation_messages_for_required_fields {
 		passwd.sendKeys("pas");
 
 		// Assert that an password too weak error is shown
-		assert driver.findElement(By.id("input-password-error")).getText().equals("Please enter at least 4 characters.");
+		assert driver.findElement(By.id("input-password-error")).getText()
+				.equals("Please enter at least 4 characters.");
 	}
 
 	@Test(priority = 3)
@@ -167,7 +170,7 @@ public class Validation_messages_for_required_fields {
 		Thread.sleep(100);
 		js.executeScript("arguments[0].click()",
 				driver.findElement(By.xpath("//*[@id=\"content\"]/form/div/div/input[2]")));
-		
+
 		// Confirm successful registration
 		assert driver.getCurrentUrl().equals("http://opencart.qatestlab.net/index.php?route=account/success");
 	}
