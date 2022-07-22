@@ -1,27 +1,22 @@
 package functionalTests.testsByBrian.tests.SignIn;
 
-import org.testng.annotations.Test;
-
-import java.util.Arrays;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Ignore;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
 
-import functionalTests.mainPackage.*;
+import functionalTests.mainPackage.DriverClass;
 
 public class Validation_messages_for_required_fields {
 
@@ -37,7 +32,7 @@ public class Validation_messages_for_required_fields {
 	private List<WebElement> requiredFields, regInputFields;
 
 	@BeforeClass
-	public void setup() {
+	public void beforeClass() {
 
 		driverClass = new DriverClass(browser);
 
@@ -66,25 +61,25 @@ public class Validation_messages_for_required_fields {
 	}
 
 	@AfterClass
-	public void tearDown() throws InterruptedException, IOException {
+	public void afterClass() throws InterruptedException, IOException {
 		Thread.sleep(3000);
 		driver.quit();
-		Runtime.getRuntime().exec("taskkill /F /IM " + ((!browser.equals("chrome") ? browser : "chrome")).toLowerCase()
-				+ "driver.exe /T");
+		driver = null;
 	}
 
 	@BeforeMethod
-	public void launch_test() throws InterruptedException {
+	public void beforeEach() throws InterruptedException {
 		driver.get(url);
-		Thread.sleep(2000);
-		driver.findElement(By.linkText("Sign In")).click();
+		Thread.sleep(4000);
+		js.executeScript("arguments[0].click()",
+				wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(By.partialLinkText("Sign ")))));
 
 		// Click Continue button
 		js.executeScript("arguments[0].click()", driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[1]/div/a")));
 	}
 
 	@AfterMethod
-	public void delay() throws InterruptedException {
+	public void afterEach() throws InterruptedException {
 		// Reset iterator index
 		i = 0;
 		// 5 sec delay
@@ -117,7 +112,7 @@ public class Validation_messages_for_required_fields {
 	@Test(priority = 1)
 	public void Incorrect_email() throws InterruptedException {
 
-		// Loop thro' the registration form and enter user credentials
+		// Loop through the registration form and enter user credentials
 		regInputFields.forEach(entry -> {
 			entry = driver.findElement(By.name(inputs[i]));
 			entry.sendKeys(incorrectUserData[i]);
@@ -131,7 +126,7 @@ public class Validation_messages_for_required_fields {
 	@Test(priority = 2)
 	public void Password_less_than_6_symbols() {
 
-		// Loop thro' the registration form and enter user credentials
+		// Loop through the registration form and enter user credentials
 		regInputFields.forEach(entry -> {
 			entry = driver.findElement(By.name(inputs[i]));
 			entry.sendKeys(correctUserData[i]);
@@ -156,7 +151,7 @@ public class Validation_messages_for_required_fields {
 		Thread.sleep(2000);
 		assert driver.getCurrentUrl().equals("http://opencart.qatestlab.net/index.php?route=account/register");
 
-		// Loop thro' the registration form and enter user credentials
+		// Loop through the registration form and enter user credentials
 		regInputFields.forEach(entry -> {
 			entry = driver.findElement(By.name(inputs[i]));
 			entry.sendKeys(passTestData[i]);

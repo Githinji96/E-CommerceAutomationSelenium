@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -64,8 +63,7 @@ public class Returning_customer {
 	public void afterClass() throws InterruptedException, IOException {
 		Thread.sleep(3000);
 		driver.quit();
-		Runtime.getRuntime().exec("taskkill /F /IM " + ((!browser.equals("chrome") ? browser : "chrome")).toLowerCase()
-				+ "driver.exe /T");
+		driver = null;
 	}
 
 	@BeforeMethod
