@@ -3,15 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields">
+      <class name="functionalTests.testsByBrian.tests.Cart.Full_cart">
         <methods>
+          <include name="tearDown"/>
+          <include name="Add_1_product"/>
           <include name="beforeEach"/>
-          <include name="afterEach"/>
-          <include name="beforeClass"/>
-          <include name="Add_valid_data"/>
-          <include name="afterClass"/>
         </methods>
-      </class> <!-- functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields -->
+      </class> <!-- functionalTests.testsByBrian.tests.Cart.Full_cart -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

@@ -1,61 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="4" passed="3">
+<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="105939" started-at="2022-07-22T04:43:49 EAT" finished-at="2022-07-22T04:45:35 EAT">
+  <suite name="Default suite" duration-ms="43607" started-at="2022-07-26T12:10:14 EAT" finished-at="2022-07-26T12:10:57 EAT">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="105939" started-at="2022-07-22T04:43:49 EAT" finished-at="2022-07-22T04:45:35 EAT">
-      <class name="functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields">
-        <test-method status="PASS" signature="beforeClass()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="beforeClass" is-config="true" duration-ms="29834" started-at="2022-07-22T04:43:49 EAT" finished-at="2022-07-22T04:44:18 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeClass -->
-        <test-method status="PASS" signature="beforeEach()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="beforeEach" is-config="true" duration-ms="18943" started-at="2022-07-22T04:44:18 EAT" finished-at="2022-07-22T04:44:37 EAT">
+    <test name="Default test" duration-ms="43607" started-at="2022-07-26T12:10:14 EAT" finished-at="2022-07-26T12:10:57 EAT">
+      <class name="functionalTests.testsByBrian.tests.Cart.Full_cart">
+        <test-method status="PASS" signature="beforeEach()[pri:0, instance:functionalTests.testsByBrian.tests.Cart.Full_cart@7bfc3126]" name="beforeEach" is-config="true" duration-ms="8386" started-at="2022-07-26T12:10:14 EAT" finished-at="2022-07-26T12:10:22 EAT">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeEach -->
-        <test-method status="PASS" signature="Empty_fields()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="Empty_fields" duration-ms="1985" started-at="2022-07-22T04:44:37 EAT" finished-at="2022-07-22T04:44:39 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Empty_fields -->
-        <test-method status="PASS" signature="afterEach()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="afterEach" is-config="true" duration-ms="2014" started-at="2022-07-22T04:44:39 EAT" finished-at="2022-07-22T04:44:41 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterEach -->
-        <test-method status="PASS" signature="beforeEach()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="beforeEach" is-config="true" duration-ms="9358" started-at="2022-07-22T04:44:41 EAT" finished-at="2022-07-22T04:44:51 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeEach -->
-        <test-method status="PASS" signature="Incorrect_email()[pri:1, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="Incorrect_email" duration-ms="2996" started-at="2022-07-22T04:44:51 EAT" finished-at="2022-07-22T04:44:54 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Incorrect_email -->
-        <test-method status="PASS" signature="afterEach()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="afterEach" is-config="true" duration-ms="2014" started-at="2022-07-22T04:44:54 EAT" finished-at="2022-07-22T04:44:56 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterEach -->
-        <test-method status="PASS" signature="beforeEach()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="beforeEach" is-config="true" duration-ms="9297" started-at="2022-07-22T04:44:56 EAT" finished-at="2022-07-22T04:45:05 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeEach -->
-        <test-method status="PASS" signature="Password_less_than_6_symbols()[pri:2, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="Password_less_than_6_symbols" duration-ms="3740" started-at="2022-07-22T04:45:05 EAT" finished-at="2022-07-22T04:45:09 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Password_less_than_6_symbols -->
-        <test-method status="PASS" signature="afterEach()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="afterEach" is-config="true" duration-ms="2015" started-at="2022-07-22T04:45:09 EAT" finished-at="2022-07-22T04:45:11 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterEach -->
-        <test-method status="PASS" signature="beforeEach()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="beforeEach" is-config="true" duration-ms="8424" started-at="2022-07-22T04:45:11 EAT" finished-at="2022-07-22T04:45:19 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- beforeEach -->
-        <test-method status="FAIL" signature="Add_valid_data()[pri:3, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="Add_valid_data" duration-ms="5564" started-at="2022-07-22T04:45:19 EAT" finished-at="2022-07-22T04:45:25 EAT">
-          <exception class="java.lang.AssertionError">
+        <test-method status="FAIL" signature="Add_1_product()[pri:0, instance:functionalTests.testsByBrian.tests.Cart.Full_cart@7bfc3126]" name="Add_1_product" duration-ms="11526" started-at="2022-07-26T12:10:22 EAT" finished-at="2022-07-26T12:10:34 EAT">
+          <exception class="org.openqa.selenium.NoSuchElementException">
+            <message>
+              <![CDATA[no such element: Unable to locate element: {"method":"css selector","selector":".sbOptions"}
+  (Session info: chrome=103.0.5060.134)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'DESKTOP-F0NG1DC', ip: '172.20.10.6', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_111'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [8923c5193ee1a04ce4278890614da4ad, findChildElement {id=ba54aa87-a333-4ad9-bc40-a323e9077808, using=class name, value=sbOptions}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 103.0.5060.134, chrome: {chromedriverVersion: 103.0.5060.134 (8ec6fce403b..., userDataDir: C:\Users\Brian\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:58813}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:58813/devtoo..., se:cdpVersion: 103.0.5060.134, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 8923c5193ee1a04ce4278890614da4ad]]>
+            </message>
             <full-stacktrace>
-              <![CDATA[java.lang.AssertionError
-at functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields.Add_valid_data(Validation_messages_for_required_fields.java:170)
+              <![CDATA[org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":".sbOptions"}
+  (Session info: chrome=103.0.5060.134)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.3.0', revision: 'a4995e2c09*'
+System info: host: 'DESKTOP-F0NG1DC', ip: '172.20.10.6', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_111'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [8923c5193ee1a04ce4278890614da4ad, findChildElement {id=ba54aa87-a333-4ad9-bc40-a323e9077808, using=class name, value=sbOptions}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 103.0.5060.134, chrome: {chromedriverVersion: 103.0.5060.134 (8ec6fce403b..., userDataDir: C:\Users\Brian\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:58813}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:58813/devtoo..., se:cdpVersion: 103.0.5060.134, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 8923c5193ee1a04ce4278890614da4ad
+at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+at java.lang.reflect.Constructor.newInstance(Unknown Source)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:569)
+at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
+at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
+at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:387)
+at org.openqa.selenium.remote.RemoteWebElement.findElement(RemoteWebElement.java:227)
+at functionalTests.testsByBrian.tests.Cart.Full_cart.lambda$0(Full_cart.java:72)
+at java.util.ArrayList.forEach(Unknown Source)
+at functionalTests.testsByBrian.tests.Cart.Full_cart.Add_1_product(Full_cart.java:69)
 at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -86,19 +82,15 @@ at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.AssertionError -->
+          </exception> <!-- org.openqa.selenium.NoSuchElementException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Add_valid_data -->
-        <test-method status="PASS" signature="afterEach()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="afterEach" is-config="true" duration-ms="2014" started-at="2022-07-22T04:45:25 EAT" finished-at="2022-07-22T04:45:27 EAT">
+        </test-method> <!-- Add_1_product -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:functionalTests.testsByBrian.tests.Cart.Full_cart@7bfc3126]" name="tearDown" is-config="true" duration-ms="23630" started-at="2022-07-26T12:10:34 EAT" finished-at="2022-07-26T12:10:57 EAT">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- afterEach -->
-        <test-method status="PASS" signature="afterClass()[pri:0, instance:functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields@4fb64261]" name="afterClass" is-config="true" duration-ms="7560" started-at="2022-07-22T04:45:27 EAT" finished-at="2022-07-22T04:45:35 EAT">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- afterClass -->
-      </class> <!-- functionalTests.testsByBrian.tests.SignIn.Validation_messages_for_required_fields -->
+        </test-method> <!-- tearDown -->
+      </class> <!-- functionalTests.testsByBrian.tests.Cart.Full_cart -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

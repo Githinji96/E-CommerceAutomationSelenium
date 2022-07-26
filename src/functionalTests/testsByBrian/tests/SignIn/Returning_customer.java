@@ -22,9 +22,10 @@ import functionalTests.mainPackage.DriverClass;
 public class Returning_customer {
 
 	private String url = "http://opencart.qatestlab.net/index.php";
-	private String  browser = "chrome";
+	private String browser = "chrome";
 	private String email = "jane54doe@email.com";
 	private String passWd = "&itsApassword#$YesitIS2022";
+	private boolean skipAfterTest = false;
 	private WebDriver driver;
 	private WebDriverWait wait;
 	private JavascriptExecutor js;
@@ -53,7 +54,7 @@ public class Returning_customer {
 		js = driverClass.js;
 		driver = driverClass.driver;
 		wait = driverClass.wait;
-		
+
 		url = (url.isEmpty()) ? "http://opencart.qatestlab.net/index.php" : url;
 
 		driver.manage().window().maximize();
@@ -62,28 +63,29 @@ public class Returning_customer {
 	@AfterClass
 	public void afterClass() throws InterruptedException, IOException {
 		Thread.sleep(3000);
-		driver.quit();
-		driver = null;
+		//driver.quit();
+		//driver = null;
 	}
 
 	@BeforeMethod
 	public void beforeEach() throws InterruptedException {
 		driver.get(url);
 		Thread.sleep(2000);
-
 		// Click sign in
-		driver.findElement(By.linkText("Sign In")).click();
-		Thread.sleep(1000);
+		driver.findElement(By.partialLinkText("Sign ")).click();
 	}
 
 	@AfterMethod
 	public void afterEach() throws InterruptedException {
 
-		// Click sign out
-		js.executeScript("arguments[0].click()",
-				wait.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText("Sign "))));
-		// Delay
-		Thread.sleep(2000);
+		if (!skipAfterTest) {
+			// Click sign out
+			js.executeScript("arguments[0].click()",
+					wait.until(ExpectedConditions.presenceOfElementLocated(By.partialLinkText("Sign "))));
+			// Delay
+			Thread.sleep(2000);
+			skipAfterTest = true;
+		}
 	}
 
 	@Test(priority = 0)
@@ -96,6 +98,9 @@ public class Returning_customer {
 		assert driver.findElement(By.className("fa-exclamation-circle")) != null
 				|| driver.findElement(By.xpath("//*[@id=\"account-login\"]/div[1]/text()")).getText()
 						.equals("Warning: No match for E-Mail Address and/or Password.");
+
+		// Skip afterTest annotation
+		skipAfterTest = true;
 	}
 
 	@Test(priority = 1)
@@ -117,19 +122,22 @@ public class Returning_customer {
 	@Test(priority = 2)
 	public void Forgotten_password_recovery() throws InterruptedException {
 
+		// Head straight to login URL
+		driver.navigate().to("http://opencart.qatestlab.net/index.php?route=account/login");
+		
 		// Click 'forgot my password'
-		driver.findElement(By.linkText("Forgotten Password")).click();
+		js.executeScript("arguments[0].click()", driver.findElement(By.partialLinkText("Forgotten ")));
 		Thread.sleep(2000);
 
 		// Type the user email
 		driver.findElement(By.id("input-email")).sendKeys(email);
 
-		// Click 'CONTINUE'
-		driver.findElement(By.xpath("//@input[@value=\"Continue\"]")).click();
-
 		// Confirm email reset link has been sent
 		assert driver.findElement(By.className("fa-check-circle")).getText()
 				.equals("An email with a confirmation link has been sent your email address.");
+
+		// Click 'CONTINUE'
+		driver.findElement(By.xpath("//input[@value=\"Continue\"]")).click();
 	}
 
 	@Test(priority = 3)
@@ -142,11 +150,20 @@ public class Returning_customer {
 		// Submit the form
 		driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/form/input")).click();
 
-		// Click 'CONTINUE'
-		driver.findElement(By.linkText("Continue")).click();
+		System.out.println("\n\n\n" + driver.getCurrentUrl() + "\n\n\n\n");
+
+		// Click 'Sign Out'
+		js.executeScript("arguments[0].click()", driver.findElement(By.partialLinkText("Sign ")));
+
+		// Click 'CONTINUE' with JavaScriptExecutor
+		js.executeScript("arguments[0].click()", driver.findElement(By.xpath("//*[@id=\"content\"]/div/div/a")));
 
 		// Confirm user sign out
-		assert driver.getCurrentUrl().equals("http://opencart.qatestlab.net/index.php?route=common/home");
+		assert driver.getCurrentUrl().equals("http://opencart.qatestlab.net/index.php?route=common/home")
+				|| driver.getCurrentUrl().equals("http://opencart.qatestlab.net/index.php?route=common/login");
+
+		// Skip afterTest annotation
+		skipAfterTest = false;
 	}
 
 	@Ignore

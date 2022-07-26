@@ -8,6 +8,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -25,15 +27,17 @@ public class Full_cart {
 	private WebDriverWait wait;
 	private JavascriptExecutor js;
 	private DriverClass driverClass;
-	private List<WebElement> shoppingItemButtons;
-	private List<List<WebElement>> shopContainers = Arrays.asList(Arrays.asList(new WebElement[30]));
+	private List<WebElement> itemBoxes, colors, sizes, options;
 
-	@BeforeClass
-	public void setup() {
+	public Full_cart() {
 		driverClass = new DriverClass("chrome");
 
 		driver = driverClass.driver;
 		js = driverClass.js;
+
+		PageFactory.initElements(driver, this);
+
+		driver.manage().window().maximize();
 
 		url = (url.isEmpty()) ? "http://opencart.qatestlab.net/index.php" : url;
 	}
@@ -46,82 +50,32 @@ public class Full_cart {
 
 	@AfterClass
 	public void tearDown() throws InterruptedException {
-		Thread.sleep(5000);
+		Thread.sleep(15000);
 		driver.quit();
+		driver = null;
 	}
-	
+
 	@Test(priority = 0)
 	public void Add_1_product() throws Exception {
 
-		// populate list with values
-//		for(int i=0;i<shopContainers.size();i++) {
-//			shopContainers.add(i, driver.findElements(By.xpath("//span[text()='Add to Cart']")));
-//		}
-		System.out.println();
-		System.out.println("shop containers length: " + shopContainers.size());
-		// get item containers and buttons within them
-		shopContainers.forEach(container -> {
-
-			container.addAll(driver.findElements(By.xpath("//span[text()='Add to Cart']")));
-			System.out.println("<parent containers>");
-			container.forEach(add2CartBtn -> {
-				System.out.println("\t" + add2CartBtn);
-			});
-			System.out.println("</parent containers>");
-		});
-
-		// items up for sale on the site searched by buttons' xpath
-		shoppingItemButtons = driver.findElements(By.xpath(
-				"//*[@id=\"page\"]/section/div/div[number()]/div/div/div/div/div/div/div[number()]/div[number()]/div/div[number()]/div/button"));
-
-		// //*[@id="page"]/section/div/div[4]
-
-		// "//span[text()='Add to Cart']"));
-		int randomIndex = (int) (Math.floor(Math.random() * (shoppingItemButtons.size())));
+		// get item containers and their relative buttons
+		itemBoxes = driver.findElements(By.className("content"));
 
 		// choose a random item and click 'Add to Cart' button with Javascript executor
-		js.executeScript("arguments[0].click()", shoppingItemButtons.get(randomIndex));
+		js.executeScript("arguments[0].click()", itemBoxes.get((int) (Math.floor(Math.random() * itemBoxes.size())))
+				.findElement(By.className("btn-primary")));
 
-		Thread.sleep(5000);
-		System.out.println();
-		shoppingItemButtons.forEach(item -> {
-			System.out.println("Item: " + item + "\n");
+		// randomly select a cart item colour and size
+		driver.findElements(By.linkText("--- Please Select ---")).forEach(e -> {
+			if(e!=null) {
+				e.click();		
+				e.findElement(By.className("sbOptions")).findElements(By.tagName("li")).get(2).click();
+			}
 		});
-		System.out.println("No. of items found: " + shoppingItemButtons.size());
-		System.out.println("Selected item: " + shoppingItemButtons.get(randomIndex));
-
-//		// choose item preferences (colour and size)
-//		new WebDriverWait(driver, Duration.ofSeconds(20))
-//				.until(ExpectedConditions.visibilityOfElementLocated
-//					(By.xpath("//*[@id=\"page\"]/div[4]/div/div/div")));
-
-		// randomly select a cart item colour
-		try {
-			new Select(driver.findElement(By.id("sbSelector_18027191"))).selectByIndex((int) (Math.floor(
-					Math.random() * ((List<WebElement>) driver.findElements(By.id("sbSelector_18027191"))).size())));
-		} catch (NoSuchElementException e) {
-			System.err.println("\nitem color not present");
-		}
-
-		// randomly select a cart item size
-		try {
-			new Select(driverClass.driver.findElement(By.id("sbSelector_16213551"))).selectByIndex((int) (Math.floor(
-					Math.random() * ((List<WebElement>) driver.findElements(By.id("sbSelector_16213551"))).size())));
-		} catch (Exception e) {
-			System.err.println("\nitem size not present");
-		}
 
 		// proceed to the cart
-		js.executeScript("arguments[0].click()",
-				driver.findElement(By.cssSelector("#page > div.ajax-overlay.visible > div > div > div > button")));
 
 		// click cart icon with Javascript executor and check the cart
-		js.executeScript("arguments[0].click()", driver.findElement(By.xpath("//*[@id=\"cart\"]/button")));
-
-		WebElement cartProduct = null;
-		cartProduct = driver.findElement(
-				By.xpath("/html/body/div[1]/header/div[1]/div[2]/div/div/div/div/div/div/div[1]/div/ul/li[1]"));
-		assert cartProduct != null;
 	}
 
 	@Ignore

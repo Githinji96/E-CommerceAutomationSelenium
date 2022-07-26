@@ -82,7 +82,7 @@ public class Validation_messages_for_required_fields {
 	public void afterEach() throws InterruptedException {
 		// Reset iterator index
 		i = 0;
-		// 5 sec delay
+		// 2 sec delay
 		Thread.sleep(2000);
 	}
 
