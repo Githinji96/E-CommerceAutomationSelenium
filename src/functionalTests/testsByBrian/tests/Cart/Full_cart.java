@@ -126,14 +126,79 @@ public class Full_cart {
 			});
 
 		}
-
-		// click cart icon with Javascript executor and check the cart
 	}
 
 	@Ignore
 	@Test(priority = 1)
-	public void Add_over_10_products() {
+	public void Add_over_10_products() throws InterruptedException {
+		for(int i=0; i<10; Thread.sleep(100),i++) {
+			
+			// get item containers and their relative buttons
+			itemBoxes = driver.findElements(By.className("content"));
 
+			// choose a random item and click 'Add to Cart' button with Javascript executor
+			js.executeScript("arguments[0].click()", itemBoxes.get((int) (Math.floor(Math.random() * itemBoxes.size())))
+					.findElement(By.className("btn-primary")));
+
+			options = driver.findElements(By.linkText("--- Please Select ---"));
+
+			if (options.size() > 0) {
+
+				// randomly select a cart item colour and listSize
+				options.forEach(select -> {
+
+					if (select != null) {
+
+						js.executeScript("arguments[0].click()", select);
+
+						pNode = (WebElement) js.executeScript("return arguments[0].parentNode;", select);
+						pNode2 = (WebElement) js.executeScript("return arguments[0].parentNode;", pNode);
+						pNode3 = (WebElement) js.executeScript("return arguments[0].parentNode;", pNode2);
+						
+						System.out.println("== this is pNode3 \n"+pNode3.getText()+"\n ========================");
+
+						isSelected = false;
+
+						optChildren = pNode.findElement(By.tagName("ul")).findElements(By.tagName("li"));
+
+						// loop through each unordered list of product specifications
+						optChildren.forEach(description -> {
+							if (optChildren.size() > 1 && !isSelected) {
+
+								index = (int) Math.floor(Math.random() * optChildren.size());
+
+								js.executeScript("arguments[0].click()", optChildren.get((index <= 0) ? 1 : index));
+								isSelected = true;
+							} else if (optChildren.size() == 1 && !isSelected) {
+								js.executeScript("arguments[0].click()", optChildren.get(0));
+							}
+						});
+					}
+					if (options.indexOf(select) == options.size() - 1) {
+						
+						WebElement btn = pNode3.findElement(By.xpath("//button/span[text()=\"Add to Cart\"]"));
+						
+						// Click 'Add to Cart' button to proceed "//button/span[text()=\"Add to Cart\"]"
+						js.executeScript("arguments[0].click()", btn);
+
+						// Then close the dialog if not null
+						if (pNode2.findElement(By.xpath("//a[@class=\"ajax-overlay_close\"]")) != null) {
+							try {
+								Thread.sleep(1000);
+								js.executeScript("arguments[0].click()",
+										pNode2.findElement(By.xpath("//a[@class=\"ajax-overlay_close\"]")));
+							} catch (InterruptedException e) {
+								System.err.println(e);
+							}
+						}
+					}
+
+					System.out.println(pNode.findElement(By.tagName("ul")).getText() + " iteem");
+					System.out.println();
+				});
+
+			}
+		}
 	}
 
 	@Ignore
