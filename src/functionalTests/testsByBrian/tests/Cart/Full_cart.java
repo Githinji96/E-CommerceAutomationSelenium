@@ -22,12 +22,15 @@ import functionalTests.mainPackage.DriverClass;
 
 public class Full_cart {
 
+	private Boolean isSelected;
+	private int listSize = 0, index;
 	private String url = "";
+	private WebElement pNode, pNode2, pNode3;
 	private WebDriver driver;
 	private WebDriverWait wait;
 	private JavascriptExecutor js;
 	private DriverClass driverClass;
-	private List<WebElement> itemBoxes, colors, sizes, options;
+	private List<WebElement> itemBoxes, optChildren, sizes, options;
 
 	public Full_cart() {
 		driverClass = new DriverClass("chrome");
@@ -50,7 +53,7 @@ public class Full_cart {
 
 	@AfterClass
 	public void tearDown() throws InterruptedException {
-		Thread.sleep(15000);
+		Thread.sleep(8000);
 		driver.quit();
 		driver = null;
 	}
@@ -65,15 +68,64 @@ public class Full_cart {
 		js.executeScript("arguments[0].click()", itemBoxes.get((int) (Math.floor(Math.random() * itemBoxes.size())))
 				.findElement(By.className("btn-primary")));
 
-		// randomly select a cart item colour and size
-		driver.findElements(By.linkText("--- Please Select ---")).forEach(e -> {
-			if(e!=null) {
-				e.click();		
-				e.findElement(By.className("sbOptions")).findElements(By.tagName("li")).get(2).click();
-			}
-		});
+		options = driver.findElements(By.linkText("--- Please Select ---"));
 
-		// proceed to the cart
+		if (options.size() > 0) {
+
+			// randomly select a cart item colour and listSize
+			options.forEach(select -> {
+
+				if (select != null) {
+
+					js.executeScript("arguments[0].click()", select);
+
+					pNode = (WebElement) js.executeScript("return arguments[0].parentNode;", select);
+					pNode2 = (WebElement) js.executeScript("return arguments[0].parentNode;", pNode);
+					pNode3 = (WebElement) js.executeScript("return arguments[0].parentNode;", pNode2);
+					
+					System.out.println("== this is pNode3 \n"+pNode3.getText()+"\n ========================");
+
+					isSelected = false;
+
+					optChildren = pNode.findElement(By.tagName("ul")).findElements(By.tagName("li"));
+
+					// loop through each unordered list of product specifications
+					optChildren.forEach(description -> {
+						if (optChildren.size() > 1 && !isSelected) {
+
+							index = (int) Math.floor(Math.random() * optChildren.size());
+
+							js.executeScript("arguments[0].click()", optChildren.get((index <= 0) ? 1 : index));
+							isSelected = true;
+						} else if (optChildren.size() == 1 && !isSelected) {
+							js.executeScript("arguments[0].click()", optChildren.get(0));
+						}
+					});
+				}
+				if (options.indexOf(select) == options.size() - 1) {
+					
+					WebElement btn = pNode3.findElement(By.xpath("//button/span[text()=\"Add to Cart\"]"));
+					
+					// Click 'Add to Cart' button to proceed "//button/span[text()=\"Add to Cart\"]"
+					js.executeScript("arguments[0].click()", btn);
+
+					// Then close the dialog if not null
+					if (pNode2.findElement(By.xpath("//a[@class=\"ajax-overlay_close\"]")) != null) {
+						try {
+							Thread.sleep(1000);
+							js.executeScript("arguments[0].click()",
+									pNode2.findElement(By.xpath("//a[@class=\"ajax-overlay_close\"]")));
+						} catch (InterruptedException e) {
+							System.err.println(e);
+						}
+					}
+				}
+
+				System.out.println(pNode.findElement(By.tagName("ul")).getText() + " iteem");
+				System.out.println();
+			});
+
+		}
 
 		// click cart icon with Javascript executor and check the cart
 	}
