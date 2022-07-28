@@ -6,7 +6,7 @@
       <class name="functionalTests.testsByBrian.tests.Cart.Full_cart">
         <methods>
           <include name="tearDown"/>
-          <include name="Add_1_product"/>
+          <include name="Add_over_10_products"/>
           <include name="beforeEach"/>
         </methods>
       </class> <!-- functionalTests.testsByBrian.tests.Cart.Full_cart -->
