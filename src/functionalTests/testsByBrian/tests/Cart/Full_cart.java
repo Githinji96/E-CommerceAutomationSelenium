@@ -104,7 +104,8 @@ public class Full_cart {
 			}
 		}
 	}
-
+	
+	@Ignore
 	@Test(priority = 1)
 	public void Add_over_10_products() throws InterruptedException {
 		
