@@ -77,13 +77,11 @@ public class AddProductsIndex {
 
 	@Test
 	public void clickPink() throws InterruptedException {
-		 driver.get("http://opencart.qatestlab.net/index.php?route=product/category&path=32");
+		driver.get("http://opencart.qatestlab.net/index.php?route=product/category&path=32");
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-		
-		  
-		  js = (JavascriptExecutor) driver; js.executeScript("arguments[0].click();",
-		  pinkcolor);
-		 
+
+		js = (JavascriptExecutor) driver;
+		js.executeScript("arguments[0].click();", pinkcolor);
 
 	}
 
