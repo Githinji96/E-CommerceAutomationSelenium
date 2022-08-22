@@ -36,7 +36,7 @@ public class SubscribeNewsLetter {
 		driver.get(URL);
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void enterEmail() {
 		email.sendKeys("John211@gmail.com");
 	}

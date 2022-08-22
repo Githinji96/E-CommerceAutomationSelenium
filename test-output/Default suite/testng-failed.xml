@@ -3,12 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="functionalTests.testsByBonface.TestLogin">
+      <class name="functionalTests.testsByBonface.ExtentTestReports">
         <methods>
-          <include name="verifyLogin" invocation-numbers="0 1 2 3"/>
-          <include name="enterURL"/>
+          <include name="test1"/>
+          <include name="teardown"/>
+          <include name="setups"/>
         </methods>
-      </class> <!-- functionalTests.testsByBonface.TestLogin -->
+      </class> <!-- functionalTests.testsByBonface.ExtentTestReports -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

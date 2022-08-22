@@ -47,7 +47,20 @@
 			<version>1.0.13.5-jre8</version>
 		</dependency -->
 
+ <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.11.0</version>
+</dependency>
+ <!-- https://mvnrepository.com/artifact/io.github.selcukes/selcukes-extent-reports -->
 
+ <!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+  <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>5.0.6</version>
+  </dependency>
 	</dependencies>
 
 </project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<listeners>
+<listener class-name="functionalTests.mainPackage.ListenersTest"/>
+</listeners>
+  <test name="Test1">
+    <classes>
+      <class name="functionalTests.testsByBonface.TestLogin"/>
+      <class name="functionalTests.testsByBonface.searchProducts"/>
+      <class name="functionalTests.testsByBonface.AddProductsIndex"/>
+      <class name="functionalTests.testsByBonface.TestBrokenLinks"/>
+      <class name="functionalTests.testsByBonface.SubscribeNewsLetter"/>
+    </classes>
+  </test> <!-- Test1 -->
+</suite> <!-- Suite -->

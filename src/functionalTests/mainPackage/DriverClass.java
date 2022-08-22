@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeSuite;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -27,10 +28,10 @@ public class DriverClass {
 	
 	// default browser-no-config
 	public DriverClass() {
-		this.browser = "chrome";
+		this.browser = "firefox";
 		setup();
 	}
-	
+	@BeforeSuite
 	@SuppressWarnings("deprecation")
 	public void setup() {
 		if (browser.equals("firefox")) {
