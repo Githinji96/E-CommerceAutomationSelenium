@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="functionalTests.testsByBonface.ExtentTestReports">
+      <class name="functionalTests.mainPackage.ToBeDeleted">
         <methods>
-          <include name="test1"/>
-          <include name="teardown"/>
-          <include name="setups"/>
+          <include name="testButton"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- functionalTests.testsByBonface.ExtentTestReports -->
+      </class> <!-- functionalTests.mainPackage.ToBeDeleted -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

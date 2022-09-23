@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -58,7 +57,8 @@ public class ExtentTestReports  {
 
 	@Test
 	public void test1() {
-		ExtentTest test1 = extent.createTest("Add products");
+//		List
+		ExtentTest test1 = extent.createTest(Thread.class.getName()+"Add products");
 		test1.log(Status.PASS, "Starting test case");
 		test1.info("test executed");
 		test1.pass("Test passed");
@@ -67,7 +67,7 @@ public class ExtentTestReports  {
 
 		js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", clickproductss);
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
 	
 	}
 
