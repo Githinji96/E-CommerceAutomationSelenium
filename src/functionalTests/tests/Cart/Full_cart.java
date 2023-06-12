@@ -1,4 +1,4 @@
-package functionalTests.testsByBrian.tests.Cart;
+package functionalTests.tests.Cart;
 
 import java.util.Arrays;
 import java.util.List;

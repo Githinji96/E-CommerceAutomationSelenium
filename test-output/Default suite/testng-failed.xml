@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="functionalTests.mainPackage.ToBeDeleted">
+      <class name="functionalTests.testsByBonface.SubscribeNewsLetter">
         <methods>
-          <include name="testButton"/>
-          <include name="tearDown"/>
+          <include name="initURL"/>
+          <include name="clicksubscribe"/>
         </methods>
-      </class> <!-- functionalTests.mainPackage.ToBeDeleted -->
+      </class> <!-- functionalTests.testsByBonface.SubscribeNewsLetter -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

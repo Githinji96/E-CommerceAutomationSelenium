@@ -1,4 +1,4 @@
-package functionalTests.testsByBrian.tests.SignIn;
+package functionalTests.tests.SignIn;
 
 import java.io.IOException;
 

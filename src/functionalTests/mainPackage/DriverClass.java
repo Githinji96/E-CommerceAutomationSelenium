@@ -19,6 +19,7 @@ public class DriverClass {
 	public WebDriver driver;
 	public JavascriptExecutor js;
 	public WebDriverWait wait;
+
 	
 	// browser variable holds the name of the browser
 	public DriverClass(String browser) {

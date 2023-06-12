@@ -1,4 +1,4 @@
-package functionalTests.testsByBonface;
+ package functionalTests.testsByBonface;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -89,7 +89,7 @@ public class searchProducts {
 
 	@Test(priority = 5)
 	public void updateQuantity() {
-
+		
 		js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", updateQuantity);
 	}
